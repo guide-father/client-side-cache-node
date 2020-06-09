@@ -1,15 +1,21 @@
 const express = require("express");
 const app = express();
-const PORT=3000
+const PORT = 3000
 app.use("/", express.static("./public"));
 
 //Middleware to set cache control headers
 app.use("/cache", function (req, res, next) {
-    res.set('Cache-Control', `public, max-age=31557600, s-maxage=31557600`); 
+    res.set('Cache-Control', `public, max-age=31557600, s-maxage=31557600`);
     next()
 })
 app.use("/cache", express.static("./cache"))
 
+app.get("/api", function (req, res) {
+    res.json({
+        data:"Response from ngrok"
+    })
+})
+
 app.listen(PORT, function () {
-    console.log(PORT)
+    console.log('running at '+PORT)
 })
