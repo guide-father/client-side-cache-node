@@ -12,7 +12,7 @@ app.use("/cache", express.static("./cache"))
 
 app.get("/api", function (req, res) {
     res.json({
-        data:"Response from ngrok"
+        data:"Response from guidefather"
     })
 })
 
